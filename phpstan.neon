@@ -1,0 +1,34 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+
+    tmpDir: build/phpstan
+
+    paths:
+        - app/
+        - database/
+        - domain/
+
+    excludePaths:
+        - database/migrations/
+
+    # Level 9 is the highest level
+    level: 8
+
+    earlyTerminatingFunctionCalls:
+        - rd
+        - dd
+
+    checkGenericClassInNonGenericObjectType: false
+    checkMissingIterableValueType: false
+    checkAlwaysTrueInstanceof: true
+
+    # larastan
+
+    noModelMake: true
+    noUnnecessaryCollectionCall: true
+    checkModelProperties: true # beta v2.6.4 https://github.com/nunomaduro/larastan/blob/v2.6.4/docs/rules.md#modelpropertyrule
+
+    databaseMigrationsPath:
+        - database/settings
