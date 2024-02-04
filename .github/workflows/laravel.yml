@@ -34,7 +34,7 @@ jobs:
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/pest -p
     - name: Set up AWS CLI
-      uses: aws-actions/configure-aws-credentials@v1
+      uses: aws-actions/configure-aws-credentials@v4
       with:
         role-to-assume: ${{ secrets.AWS_ROLE }}
         aws-region: ${{ secrets.AWS_REGION }}
