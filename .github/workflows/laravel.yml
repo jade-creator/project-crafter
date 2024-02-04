@@ -33,10 +33,3 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/pest -p
-    - name: Set up AWS CLI
-      uses: aws-actions/configure-aws-credentials@v4
-      with:
-        role-to-assume: ${{ secrets.AWS_ROLE }}
-        aws-region: ${{ secrets.AWS_REGION }}
-    - name: Deploy to AWS EC2
-      run: ssh ${{ secrets.AWS_INSTANCE_IP }} "cd /var/www/html/project-crafter && git pull origin main && composer install --no-dev && php artisan migrate --force && php artisan optimize"
